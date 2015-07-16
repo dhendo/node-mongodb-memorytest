@@ -1,0 +1,23 @@
+{
+  "name": "node-mongodb-memorytest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhendo/node-mongodb-memorytest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhendo/node-mongodb-memorytest/issues"
+  },
+  "homepage": "https://github.com/dhendo/node-mongodb-memorytest",
+  "dependencies": {
+    "memwatch": "^0.2.2",
+    "mongodb": "^2.0.39"
+  }
+}
