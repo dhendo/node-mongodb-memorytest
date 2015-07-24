@@ -1,5 +1,11 @@
 var mongodb = require("mongodb");
 var MongoClient = mongodb.MongoClient;
+var rssResults =[];
+var heapResults =[];
+
+
+var ITERATIONS = 250000;
+
 var logStats = function () {
     console.log("\n\n")
 
@@ -11,7 +17,12 @@ var logStats = function () {
     var rss = current.rss;
     var heap = current.heapTotal;
     var delta = rss - initialMem;
+
+
     var heapdelta = delta - initialHeap;
+
+    rssResults.push(delta);
+    heapResults.push(heapdelta);
     console.log((i / 1000).toFixed(2) + "k Collections")
     console.log((heap / (1024 * 1024)).toFixed(2) + "MB Heap");
     console.log((rss / (1024 * 1024)).toFixed(2) + "MB RSS");
@@ -58,11 +69,20 @@ function runNext() {
         logStats();
     }
 
-    if(i == 50000) {
+    if(i == ITERATIONS) {
         shouldExit = true;
 
-        var diff = hd.end();
-        console.log(require("util").inspect(diff, true, null));
+
+
+
+        console.log(rssResults.join(","))
+        console.log(heapResults.join(","))
+        //var diff = hd.end();
+        //console.log(require("util").inspect(diff, true, null));
+
+
+
+
 
         process.reallyExit();
     }
